@@ -1,0 +1,21 @@
+<div class="test-detail">
+  <h2>{{ test.name }}</h2>
+  <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
+    <div *ngFor="let question of test.questions">
+      <h3>{{ question.text }}</h3>
+      <ul>
+        <li *ngFor="let answer of question.answers">
+          <label>
+            <input type="checkbox" [formControlName]="answer.id"> {{ answer.text }}
+          </label>
+        </li>
+      </ul>
+    </div>
+    <a routerLink="/" class="back-button">Назад к списку тестов</a>
+    <button type="submit" [disabled]="testForm.invalid">Submit</button>
+  </form>
+
+  <div id="toast-container" class="toast-top-right">
+    
+  </div>
+</div>
